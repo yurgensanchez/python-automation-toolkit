@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "python-automation-toolkit"
+version = "0.1.0"
+description = "Small Python CLI toolkit for practical file and text automation tasks."
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+  { name = "Portfolio Project" }
+]
+dependencies = [
+  "typer>=0.12.0",
+  "rich>=13.0.0"
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0.0"
+]
+
+[project.scripts]
+automation-toolkit = "automation_toolkit.cli:app"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
