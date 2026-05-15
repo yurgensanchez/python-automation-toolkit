@@ -7,6 +7,7 @@ import typer
 from rich.console import Console
 from rich.table import Table
 
+from automation_toolkit.api_tools import fetch_github_repo_summary, format_github_repo_summary
 from automation_toolkit.csv_tools import convert_csv_to_excel
 from automation_toolkit.file_tools import organize_by_extension
 from automation_toolkit.rename_tools import rename_files_by_pattern
@@ -20,6 +21,21 @@ console = Console()
 def configure_logging(verbose: bool) -> None:
     level = logging.INFO if verbose else logging.WARNING
     logging.basicConfig(level=level, format="%(levelname)s: %(message)s")
+
+
+@app.command("github-repo-summary")
+def github_repo_summary_command(
+    owner: str = typer.Argument(..., help="GitHub repository owner."),
+    repo: str = typer.Argument(..., help="GitHub repository name."),
+) -> None:
+    """Fetch a small summary for a public GitHub repository."""
+    try:
+        summary = fetch_github_repo_summary(owner, repo)
+    except RuntimeError as exc:
+        console.print(f"Error: {exc}")
+        raise typer.Exit(code=1) from exc
+
+    console.print(format_github_repo_summary(summary))
 
 
 @app.command("organize-files")

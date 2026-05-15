@@ -12,7 +12,8 @@ This project is intentionally small in its first version. The current goal is to
 - The rename command uses a simple numbered pattern only.
 - The rename command does not recursively rename files in nested directories.
 - Directory reports only summarize files directly inside one folder.
-- It does not currently consume external APIs.
+- GitHub repository summaries use the public GitHub API without authentication.
+- GitHub API requests may fail because of network issues, unavailable repositories, or rate limits.
 - It has basic tests, but not full CLI integration tests yet.
 
 ## Why These Limits Exist
@@ -27,5 +28,6 @@ The first version avoids broad file-system behavior because automation tools can
 - Add recursive directory reports as an explicit option.
 - Add CLI integration tests.
 - Add CSV delimiter and encoding auto-detection if it becomes useful.
+- Add optional authenticated GitHub API requests only if the project needs higher rate limits.
 - Add sample input and output folders for documentation.
 - Add GitHub Actions to run tests automatically.

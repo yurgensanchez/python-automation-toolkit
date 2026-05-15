@@ -15,6 +15,7 @@ Small repetitive tasks often take more time than they should: grouping files, cl
 - Convert CSV files to Excel workbooks.
 - Rename files using a numbered pattern.
 - Generate a simple Markdown report for files in a directory.
+- Fetch a short summary for a public GitHub repository.
 - Clean text by trimming extra spaces and collapsing repeated whitespace.
 - Optional lowercase conversion for cleaned text.
 
@@ -24,6 +25,7 @@ Small repetitive tasks often take more time than they should: grouping files, cl
 - Typer for the CLI
 - Rich for terminal output
 - pandas and openpyxl for CSV to Excel conversion
+- requests for public API calls
 - pytest for tests
 - pathlib and logging from the standard library
 
@@ -35,6 +37,7 @@ python-automation-toolkit/
 ├── examples/
 ├── src/
 │   └── automation_toolkit/
+│       ├── api_tools.py
 │       ├── csv_tools.py
 │       ├── cli.py
 │       ├── file_tools.py
@@ -67,6 +70,12 @@ Show available commands:
 
 ```bash
 automation-toolkit --help
+```
+
+Fetch a public GitHub repository summary:
+
+```bash
+automation-toolkit github-repo-summary python cpython
 ```
 
 Organize files by extension:
@@ -174,7 +183,7 @@ The repository also includes a GitHub Actions workflow that runs the test suite 
 - CSV conversion supports custom delimiter and encoding options, but does not auto-detect them.
 - File renaming uses one numbered pattern at a time.
 - File reports only summarize files directly inside one folder.
-- API consumption is planned but not implemented yet.
+- GitHub repository summaries use the public GitHub API and may be rate-limited.
 - This is a portfolio/demo project, not a production-grade automation suite.
 
 See [docs/limitations.md](docs/limitations.md) for more detail.
