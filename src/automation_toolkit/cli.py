@@ -7,6 +7,7 @@ import typer
 from rich.console import Console
 from rich.table import Table
 
+from automation_toolkit.csv_tools import convert_csv_to_excel
 from automation_toolkit.file_tools import organize_by_extension
 from automation_toolkit.text_tools import clean_text
 
@@ -51,6 +52,16 @@ def clean_text_command(
 ) -> None:
     """Trim text and collapse repeated whitespace."""
     console.print(clean_text(text, lowercase=lowercase))
+
+
+@app.command("csv-to-excel")
+def csv_to_excel_command(
+    csv_file: Path = typer.Argument(..., help="CSV file to convert."),
+    output: Path | None = typer.Option(None, "--output", "-o", help="Optional .xlsx output path."),
+) -> None:
+    """Convert a CSV file into an Excel workbook."""
+    destination = convert_csv_to_excel(csv_file, output)
+    console.print(f"Excel file created: {destination}")
 
 
 if __name__ == "__main__":

@@ -12,6 +12,7 @@ Small repetitive tasks often take more time than they should: grouping files, cl
 
 - Organize files into folders by extension.
 - Preview file organization with `--dry-run`.
+- Convert CSV files to Excel workbooks.
 - Clean text by trimming extra spaces and collapsing repeated whitespace.
 - Optional lowercase conversion for cleaned text.
 
@@ -20,6 +21,7 @@ Small repetitive tasks often take more time than they should: grouping files, cl
 - Python 3.10+
 - Typer for the CLI
 - Rich for terminal output
+- pandas and openpyxl for CSV to Excel conversion
 - pytest for tests
 - pathlib and logging from the standard library
 
@@ -92,6 +94,18 @@ Clean and lowercase text:
 automation-toolkit clean-text "  HELLO     From   Python  " --lowercase
 ```
 
+Convert a CSV file to Excel:
+
+```bash
+automation-toolkit csv-to-excel examples/sample_files/report.csv
+```
+
+Write the Excel file to a custom path:
+
+```bash
+automation-toolkit csv-to-excel examples/sample_files/report.csv --output organized_output/report.xlsx
+```
+
 ## Tests
 
 Run the test suite:
@@ -106,19 +120,20 @@ pytest
 - Nested directory traversal is intentionally left out to avoid unexpected file moves.
 - `--dry-run` exists so users can review changes before moving files.
 - CLI logic is separated from business logic so tests can target the core functions.
+- CSV conversion is implemented as a focused command instead of being mixed into the file organizer.
 
 ## Limitations
 
 - The file organizer does not process nested directories yet.
 - Existing destination files are not renamed automatically.
-- CSV to Excel conversion and API consumption are planned but not implemented yet.
+- CSV conversion uses pandas defaults and does not infer custom encodings yet.
+- API consumption is planned but not implemented yet.
 - This is a portfolio/demo project, not a production-grade automation suite.
 
 See [docs/limitations.md](docs/limitations.md) for more detail.
 
 ## Next Steps
 
-- Add a CSV to Excel converter.
 - Add a file renaming command based on patterns.
 - Add examples with sample files.
 - Add GitHub Actions for automated tests.
