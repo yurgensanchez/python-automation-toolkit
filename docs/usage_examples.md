@@ -51,3 +51,25 @@ Output:
 ```text
 customer needs support
 ```
+
+## Rename Files
+
+Preview the changes:
+
+```bash
+automation-toolkit rename-files examples/sample_files --prefix document --dry-run
+```
+
+Apply the rename:
+
+```bash
+automation-toolkit rename-files examples/sample_files --prefix document
+```
+
+Expected result:
+
+```text
+document_001
+document_002.csv
+document_003.txt
+```

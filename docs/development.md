@@ -31,6 +31,7 @@ Examples:
 ```text
 chore(project): add base package structure
 feat(files): add extension-based organizer
+feat(files): add numbered rename command
 test(files): add organizer tests
 docs(readme): add installation and usage steps
 ```

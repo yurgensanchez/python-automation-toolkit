@@ -12,6 +12,7 @@ Small repetitive tasks often take more time than they should: grouping files, cl
 
 - Organize files into folders by extension.
 - Preview file organization with `--dry-run`.
+- Rename files using a numbered pattern.
 - Clean text by trimming extra spaces and collapsing repeated whitespace.
 - Optional lowercase conversion for cleaned text.
 
@@ -92,6 +93,18 @@ Clean and lowercase text:
 automation-toolkit clean-text "  HELLO     From   Python  " --lowercase
 ```
 
+Preview file renaming:
+
+```bash
+automation-toolkit rename-files examples/sample_files --prefix document --dry-run
+```
+
+Rename files with a custom starting number:
+
+```bash
+automation-toolkit rename-files examples/sample_files --prefix document --start 10
+```
+
 ## Tests
 
 Run the test suite:
@@ -106,11 +119,13 @@ pytest
 - Nested directory traversal is intentionally left out to avoid unexpected file moves.
 - `--dry-run` exists so users can review changes before moving files.
 - CLI logic is separated from business logic so tests can target the core functions.
+- Renaming refuses to overwrite files that already exist.
 
 ## Limitations
 
 - The file organizer does not process nested directories yet.
 - Existing destination files are not renamed automatically.
+- File renaming uses one numbered pattern at a time.
 - CSV to Excel conversion and API consumption are planned but not implemented yet.
 - This is a portfolio/demo project, not a production-grade automation suite.
 
@@ -119,7 +134,6 @@ See [docs/limitations.md](docs/limitations.md) for more detail.
 ## Next Steps
 
 - Add a CSV to Excel converter.
-- Add a file renaming command based on patterns.
 - Add examples with sample files.
 - Add GitHub Actions for automated tests.
 - Improve error messages for common user mistakes.
