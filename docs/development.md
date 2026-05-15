@@ -14,6 +14,10 @@ pip install -e ".[dev]"
 pytest
 ```
 
+## Continuous Integration
+
+The workflow in `.github/workflows/tests.yml` runs the test suite on pushes and pull requests targeting `main`.
+
 ## Add a New Tool
 
 1. Add core logic in a focused module under `src/automation_toolkit/`.
@@ -34,6 +38,7 @@ feat(files): add extension-based organizer
 feat(csv): add csv to excel conversion
 feat(files): add numbered rename command
 feat(reports): add directory file report
+ci(actions): add pytest workflow
 test(files): add organizer tests
 docs(readme): add installation and usage steps
 ```

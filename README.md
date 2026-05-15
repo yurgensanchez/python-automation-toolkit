@@ -143,6 +143,8 @@ Run the test suite:
 pytest
 ```
 
+The repository also includes a GitHub Actions workflow that runs the test suite on pushes and pull requests targeting `main`.
+
 ## Design Decisions
 
 - The first version only processes files directly inside the selected directory.
@@ -171,5 +173,4 @@ See [docs/limitations.md](docs/limitations.md) for more detail.
 - Add custom CSV delimiter and encoding options.
 - Add date-based rename patterns.
 - Add optional recursive reports.
-- Add GitHub Actions for automated tests.
 - Improve error messages for common user mistakes.
