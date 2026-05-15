@@ -1,5 +1,27 @@
 # Usage Examples
 
+## GitHub Repository Summary
+
+Fetch a public repository summary:
+
+```bash
+automation-toolkit github-repo-summary python cpython
+```
+
+Expected output:
+
+```text
+Repository: python/cpython
+Description: The Python programming language
+Language: Python
+Stars: 70000
+Forks: 30000
+Open issues: 9000
+URL: https://github.com/python/cpython
+```
+
+The numbers above are examples. Live API results will change over time.
+
 ## Organize Files
 
 Preview changes first:

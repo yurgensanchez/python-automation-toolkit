@@ -36,6 +36,7 @@ Examples:
 
 ```text
 chore(project): add base package structure
+feat(api): add github repository summary command
 feat(files): add extension-based organizer
 feat(csv): add csv to excel conversion
 feat(csv): add delimiter and encoding options

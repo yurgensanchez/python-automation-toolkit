@@ -15,6 +15,31 @@ def test_clean_text_command_outputs_normalized_text() -> None:
     assert "hello from python" in result.output
 
 
+def test_github_repo_summary_command_outputs_summary(monkeypatch) -> None:
+    def fake_fetch(owner: str, repo: str):
+        from automation_toolkit.api_tools import GitHubRepoSummary
+
+        assert owner == "python"
+        assert repo == "cpython"
+        return GitHubRepoSummary(
+            full_name="python/cpython",
+            description="The Python programming language",
+            stars=70000,
+            forks=30000,
+            open_issues=9000,
+            language="Python",
+            url="https://github.com/python/cpython",
+        )
+
+    monkeypatch.setattr("automation_toolkit.cli.fetch_github_repo_summary", fake_fetch)
+
+    result = runner.invoke(app, ["github-repo-summary", "python", "cpython"])
+
+    assert result.exit_code == 0
+    assert "Repository: python/cpython" in result.output
+    assert "Stars: 70000" in result.output
+
+
 def test_organize_files_dry_run_does_not_move_files(tmp_path: Path) -> None:
     source_file = tmp_path / "notes.txt"
     source_file.write_text("hello", encoding="utf-8")
