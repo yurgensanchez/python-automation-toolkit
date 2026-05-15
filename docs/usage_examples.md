@@ -51,3 +51,23 @@ Output:
 ```text
 customer needs support
 ```
+
+## Convert CSV to Excel
+
+Input:
+
+```bash
+automation-toolkit csv-to-excel examples/sample_files/report.csv
+```
+
+Expected output:
+
+```text
+Excel file created: .../examples/sample_files/report.xlsx
+```
+
+Custom output path:
+
+```bash
+automation-toolkit csv-to-excel examples/sample_files/report.csv --output organized_output/report.xlsx
+```
