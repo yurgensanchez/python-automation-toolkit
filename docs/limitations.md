@@ -7,8 +7,8 @@ This project is intentionally small in its first version. The current goal is to
 - The file organizer only reads files directly inside the selected folder.
 - It does not recursively organize nested directories.
 - It does not handle duplicate destination filenames with automatic renaming.
-- CSV to Excel conversion uses pandas defaults.
-- CSV to Excel conversion does not expose custom delimiter or encoding options yet.
+- CSV to Excel conversion supports custom delimiter and encoding options, but does not auto-detect them.
+- CSV to Excel conversion expects a single-character delimiter.
 - The rename command uses a simple numbered pattern only.
 - The rename command does not recursively rename files in nested directories.
 - Directory reports only summarize files directly inside one folder.
@@ -26,6 +26,6 @@ The first version avoids broad file-system behavior because automation tools can
 - Add more rename patterns, such as date-based names.
 - Add recursive directory reports as an explicit option.
 - Add CLI integration tests.
-- Add CSV delimiter and encoding options.
+- Add CSV delimiter and encoding auto-detection if it becomes useful.
 - Add sample input and output folders for documentation.
 - Add GitHub Actions to run tests automatically.

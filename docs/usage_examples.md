@@ -72,6 +72,18 @@ Custom output path:
 automation-toolkit csv-to-excel examples/sample_files/report.csv --output organized_output/report.xlsx
 ```
 
+Semicolon-delimited CSV:
+
+```bash
+automation-toolkit csv-to-excel examples/sample_files/report.csv --delimiter ";"
+```
+
+CSV with a specific encoding:
+
+```bash
+automation-toolkit csv-to-excel examples/sample_files/report.csv --encoding latin-1
+```
+
 ## Rename Files
 
 Preview the changes:
