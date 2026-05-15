@@ -14,6 +14,8 @@ pip install -e ".[dev]"
 pytest
 ```
 
+The test suite includes unit tests for core functions and CLI integration tests using Typer's `CliRunner`.
+
 ## Continuous Integration
 
 The workflow in `.github/workflows/tests.yml` runs the test suite on pushes and pull requests targeting `main`.
@@ -39,6 +41,7 @@ feat(csv): add csv to excel conversion
 feat(files): add numbered rename command
 feat(reports): add directory file report
 ci(actions): add pytest workflow
+test(cli): add integration tests for commands
 test(files): add organizer tests
 docs(readme): add installation and usage steps
 ```
