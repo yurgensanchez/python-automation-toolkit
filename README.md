@@ -14,6 +14,7 @@ Small repetitive tasks often take more time than they should: grouping files, cl
 - Preview file organization with `--dry-run`.
 - Convert CSV files to Excel workbooks.
 - Rename files using a numbered pattern.
+- Generate a simple Markdown report for files in a directory.
 - Clean text by trimming extra spaces and collapsing repeated whitespace.
 - Optional lowercase conversion for cleaned text.
 
@@ -38,6 +39,7 @@ python-automation-toolkit/
 │       ├── cli.py
 │       ├── file_tools.py
 │       ├── rename_tools.py
+│       ├── report_tools.py
 │       └── text_tools.py
 ├── tests/
 ├── pyproject.toml
@@ -121,6 +123,18 @@ Rename files with a custom starting number:
 automation-toolkit rename-files examples/sample_files --prefix document --start 10
 ```
 
+Generate a file report in the terminal:
+
+```bash
+automation-toolkit file-report examples/sample_files
+```
+
+Write a report to a Markdown file:
+
+```bash
+automation-toolkit file-report examples/sample_files --output organized_output/report.md
+```
+
 ## Tests
 
 Run the test suite:
@@ -137,6 +151,7 @@ pytest
 - CLI logic is separated from business logic so tests can target the core functions.
 - CSV conversion is implemented as a focused command instead of being mixed into the file organizer.
 - Renaming refuses to overwrite files that already exist.
+- Reports are generated as Markdown so they can be reviewed or committed easily.
 
 ## Limitations
 
@@ -144,6 +159,7 @@ pytest
 - Existing destination files are not renamed automatically.
 - CSV conversion uses pandas defaults and does not infer custom encodings yet.
 - File renaming uses one numbered pattern at a time.
+- File reports only summarize files directly inside one folder.
 - API consumption is planned but not implemented yet.
 - This is a portfolio/demo project, not a production-grade automation suite.
 
@@ -154,5 +170,6 @@ See [docs/limitations.md](docs/limitations.md) for more detail.
 - Add examples with sample files.
 - Add custom CSV delimiter and encoding options.
 - Add date-based rename patterns.
+- Add optional recursive reports.
 - Add GitHub Actions for automated tests.
 - Improve error messages for common user mistakes.

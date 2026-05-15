@@ -93,3 +93,33 @@ document_001
 document_002.csv
 document_003.txt
 ```
+
+## Generate File Report
+
+Show a report in the terminal:
+
+```bash
+automation-toolkit file-report examples/sample_files
+```
+
+Write the report to a Markdown file:
+
+```bash
+automation-toolkit file-report examples/sample_files --output organized_output/report.md
+```
+
+Expected content:
+
+```markdown
+# Directory Report
+
+Total files: 3
+
+## Files by Extension
+
+| Extension | Files |
+| --- | ---: |
+| csv | 1 |
+| no_extension | 1 |
+| txt | 1 |
+```
