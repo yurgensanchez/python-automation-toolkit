@@ -86,9 +86,11 @@ def clean_text_command(
 def csv_to_excel_command(
     csv_file: Path = typer.Argument(..., help="CSV file to convert."),
     output: Path | None = typer.Option(None, "--output", "-o", help="Optional .xlsx output path."),
+    delimiter: str = typer.Option(",", "--delimiter", "-d", help="CSV delimiter character."),
+    encoding: str = typer.Option("utf-8", "--encoding", "-e", help="CSV file encoding."),
 ) -> None:
     """Convert a CSV file into an Excel workbook."""
-    destination = convert_csv_to_excel(csv_file, output)
+    destination = convert_csv_to_excel(csv_file, output, delimiter=delimiter, encoding=encoding)
     console.print(f"Excel file created: {destination}")
 
 

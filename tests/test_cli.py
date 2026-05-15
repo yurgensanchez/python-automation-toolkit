@@ -53,6 +53,30 @@ def test_csv_to_excel_command_creates_workbook(tmp_path: Path) -> None:
     assert dataframe.to_dict(orient="records") == [{"product": "coffee", "total": 25}]
 
 
+def test_csv_to_excel_command_accepts_delimiter_and_encoding(tmp_path: Path) -> None:
+    csv_file = tmp_path / "sales.csv"
+    output_file = tmp_path / "sales.xlsx"
+    csv_file.write_text("product;total\ncoffee;25\n", encoding="latin-1")
+
+    result = runner.invoke(
+        app,
+        [
+            "csv-to-excel",
+            str(csv_file),
+            "--output",
+            str(output_file),
+            "--delimiter",
+            ";",
+            "--encoding",
+            "latin-1",
+        ],
+    )
+
+    assert result.exit_code == 0
+    dataframe = pd.read_excel(output_file)
+    assert dataframe.to_dict(orient="records") == [{"product": "coffee", "total": 25}]
+
+
 def test_file_report_command_writes_markdown_report(tmp_path: Path) -> None:
     report_file = tmp_path / "report.md"
     (tmp_path / "notes.txt").write_text("hello", encoding="utf-8")

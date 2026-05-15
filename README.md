@@ -111,6 +111,18 @@ Write the Excel file to a custom path:
 automation-toolkit csv-to-excel examples/sample_files/report.csv --output organized_output/report.xlsx
 ```
 
+Convert a semicolon-delimited CSV:
+
+```bash
+automation-toolkit csv-to-excel examples/sample_files/report.csv --delimiter ";"
+```
+
+Read a CSV with a specific encoding:
+
+```bash
+automation-toolkit csv-to-excel examples/sample_files/report.csv --encoding latin-1
+```
+
 Preview file renaming:
 
 ```bash
@@ -159,7 +171,7 @@ The repository also includes a GitHub Actions workflow that runs the test suite 
 
 - The file organizer does not process nested directories yet.
 - Existing destination files are not renamed automatically.
-- CSV conversion uses pandas defaults and does not infer custom encodings yet.
+- CSV conversion supports custom delimiter and encoding options, but does not auto-detect them.
 - File renaming uses one numbered pattern at a time.
 - File reports only summarize files directly inside one folder.
 - API consumption is planned but not implemented yet.
@@ -170,7 +182,6 @@ See [docs/limitations.md](docs/limitations.md) for more detail.
 ## Next Steps
 
 - Add examples with sample files.
-- Add custom CSV delimiter and encoding options.
 - Add date-based rename patterns.
 - Add optional recursive reports.
 - Improve error messages for common user mistakes.

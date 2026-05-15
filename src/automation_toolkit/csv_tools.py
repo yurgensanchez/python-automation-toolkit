@@ -10,7 +10,12 @@ def default_excel_path(csv_path: Path) -> Path:
     return csv_path.with_suffix(".xlsx")
 
 
-def convert_csv_to_excel(csv_path: Path, output_path: Path | None = None) -> Path:
+def convert_csv_to_excel(
+    csv_path: Path,
+    output_path: Path | None = None,
+    delimiter: str = ",",
+    encoding: str = "utf-8",
+) -> Path:
     """Convert a CSV file to an Excel workbook and return the output path."""
     csv_path = csv_path.expanduser().resolve()
 
@@ -20,11 +25,15 @@ def convert_csv_to_excel(csv_path: Path, output_path: Path | None = None) -> Pat
         raise IsADirectoryError(f"CSV path is not a file: {csv_path}")
     if csv_path.suffix.lower() != ".csv":
         raise ValueError(f"Expected a .csv file, got: {csv_path.name}")
+    if not delimiter:
+        raise ValueError("Delimiter cannot be empty")
+    if len(delimiter) > 1:
+        raise ValueError("Delimiter must be a single character")
 
     destination = (output_path or default_excel_path(csv_path)).expanduser().resolve()
     destination.parent.mkdir(parents=True, exist_ok=True)
 
-    dataframe = pd.read_csv(csv_path)
+    dataframe = pd.read_csv(csv_path, sep=delimiter, encoding=encoding)
     dataframe.to_excel(destination, index=False)
 
     return destination
