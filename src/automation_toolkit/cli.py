@@ -9,6 +9,7 @@ from rich.table import Table
 
 from automation_toolkit.csv_tools import convert_csv_to_excel
 from automation_toolkit.file_tools import organize_by_extension
+from automation_toolkit.rename_tools import rename_files_by_pattern
 from automation_toolkit.text_tools import clean_text
 
 app = typer.Typer(help="Practical Python automation tools for files and text.")
@@ -40,6 +41,32 @@ def organize_files(
     table.add_column("Destination")
 
     for original, destination in moves:
+        table.add_row(str(original), str(destination))
+
+    console.print(table)
+
+
+@app.command("rename-files")
+def rename_files(
+    source: Path = typer.Argument(..., help="Directory containing files to rename."),
+    prefix: str = typer.Option(..., "--prefix", "-p", help="Prefix for generated filenames."),
+    start: int = typer.Option(1, "--start", "-s", help="Starting number for renamed files."),
+    dry_run: bool = typer.Option(False, "--dry-run", help="Preview changes without renaming files."),
+    verbose: bool = typer.Option(False, "--verbose", "-v", help="Show detailed logs."),
+) -> None:
+    """Rename files using a numbered pattern."""
+    configure_logging(verbose)
+    renames = rename_files_by_pattern(source, prefix=prefix, start=start, dry_run=dry_run)
+
+    if not renames:
+        console.print("No files to rename.")
+        raise typer.Exit()
+
+    table = Table(title="Planned renames" if dry_run else "Renamed files")
+    table.add_column("Original")
+    table.add_column("New name")
+
+    for original, destination in renames:
         table.add_row(str(original), str(destination))
 
     console.print(table)

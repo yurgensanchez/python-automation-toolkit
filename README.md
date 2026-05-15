@@ -13,6 +13,7 @@ Small repetitive tasks often take more time than they should: grouping files, cl
 - Organize files into folders by extension.
 - Preview file organization with `--dry-run`.
 - Convert CSV files to Excel workbooks.
+- Rename files using a numbered pattern.
 - Clean text by trimming extra spaces and collapsing repeated whitespace.
 - Optional lowercase conversion for cleaned text.
 
@@ -33,8 +34,10 @@ python-automation-toolkit/
 ├── examples/
 ├── src/
 │   └── automation_toolkit/
+│       ├── csv_tools.py
 │       ├── cli.py
 │       ├── file_tools.py
+│       ├── rename_tools.py
 │       └── text_tools.py
 ├── tests/
 ├── pyproject.toml
@@ -106,6 +109,18 @@ Write the Excel file to a custom path:
 automation-toolkit csv-to-excel examples/sample_files/report.csv --output organized_output/report.xlsx
 ```
 
+Preview file renaming:
+
+```bash
+automation-toolkit rename-files examples/sample_files --prefix document --dry-run
+```
+
+Rename files with a custom starting number:
+
+```bash
+automation-toolkit rename-files examples/sample_files --prefix document --start 10
+```
+
 ## Tests
 
 Run the test suite:
@@ -121,12 +136,14 @@ pytest
 - `--dry-run` exists so users can review changes before moving files.
 - CLI logic is separated from business logic so tests can target the core functions.
 - CSV conversion is implemented as a focused command instead of being mixed into the file organizer.
+- Renaming refuses to overwrite files that already exist.
 
 ## Limitations
 
 - The file organizer does not process nested directories yet.
 - Existing destination files are not renamed automatically.
 - CSV conversion uses pandas defaults and does not infer custom encodings yet.
+- File renaming uses one numbered pattern at a time.
 - API consumption is planned but not implemented yet.
 - This is a portfolio/demo project, not a production-grade automation suite.
 
@@ -134,7 +151,8 @@ See [docs/limitations.md](docs/limitations.md) for more detail.
 
 ## Next Steps
 
-- Add a file renaming command based on patterns.
 - Add examples with sample files.
+- Add custom CSV delimiter and encoding options.
+- Add date-based rename patterns.
 - Add GitHub Actions for automated tests.
 - Improve error messages for common user mistakes.

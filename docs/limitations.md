@@ -9,6 +9,8 @@ This project is intentionally small in its first version. The current goal is to
 - It does not handle duplicate destination filenames with automatic renaming.
 - CSV to Excel conversion uses pandas defaults.
 - CSV to Excel conversion does not expose custom delimiter or encoding options yet.
+- The rename command uses a simple numbered pattern only.
+- The rename command does not recursively rename files in nested directories.
 - It does not currently consume external APIs.
 - It has basic tests, but not full CLI integration tests yet.
 
@@ -20,6 +22,7 @@ The first version avoids broad file-system behavior because automation tools can
 
 - Add safer duplicate filename handling.
 - Add recursive mode as an explicit option.
+- Add more rename patterns, such as date-based names.
 - Add CLI integration tests.
 - Add CSV delimiter and encoding options.
 - Add sample input and output folders for documentation.

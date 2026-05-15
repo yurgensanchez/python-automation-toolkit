@@ -71,3 +71,25 @@ Custom output path:
 ```bash
 automation-toolkit csv-to-excel examples/sample_files/report.csv --output organized_output/report.xlsx
 ```
+
+## Rename Files
+
+Preview the changes:
+
+```bash
+automation-toolkit rename-files examples/sample_files --prefix document --dry-run
+```
+
+Apply the rename:
+
+```bash
+automation-toolkit rename-files examples/sample_files --prefix document
+```
+
+Expected result:
+
+```text
+document_001
+document_002.csv
+document_003.txt
+```
