@@ -8,8 +8,9 @@ version = "0.1.0"
 description = "Small Python CLI toolkit for practical file and text automation tasks."
 readme = "README.md"
 requires-python = ">=3.10"
+license = "MIT"
 authors = [
-  { name = "Portfolio Project" }
+  { name = "Yurgen Sanchez" }
 ]
 dependencies = [
   "typer>=0.12.0",

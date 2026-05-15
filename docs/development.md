@@ -20,6 +20,10 @@ The test suite includes unit tests for core functions and CLI integration tests 
 
 The workflow in `.github/workflows/tests.yml` runs the test suite on pushes and pull requests targeting `main`.
 
+## Release Notes
+
+The first portfolio-ready release is `v0.1.0`. It includes the core CLI commands, documentation, tests, and GitHub Actions workflow.
+
 ## Add a New Tool
 
 1. Add core logic in a focused module under `src/automation_toolkit/`.
@@ -37,6 +41,7 @@ Examples:
 ```text
 chore(project): add base package structure
 feat(api): add github repository summary command
+docs(project): prepare portfolio-ready v0.1.0
 feat(files): add extension-based organizer
 feat(csv): add csv to excel conversion
 feat(csv): add delimiter and encoding options
