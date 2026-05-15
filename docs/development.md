@@ -33,6 +33,7 @@ chore(project): add base package structure
 feat(files): add extension-based organizer
 feat(csv): add csv to excel conversion
 feat(files): add numbered rename command
+feat(reports): add directory file report
 test(files): add organizer tests
 docs(readme): add installation and usage steps
 ```

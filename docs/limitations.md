@@ -11,6 +11,7 @@ This project is intentionally small in its first version. The current goal is to
 - CSV to Excel conversion does not expose custom delimiter or encoding options yet.
 - The rename command uses a simple numbered pattern only.
 - The rename command does not recursively rename files in nested directories.
+- Directory reports only summarize files directly inside one folder.
 - It does not currently consume external APIs.
 - It has basic tests, but not full CLI integration tests yet.
 
@@ -23,6 +24,7 @@ The first version avoids broad file-system behavior because automation tools can
 - Add safer duplicate filename handling.
 - Add recursive mode as an explicit option.
 - Add more rename patterns, such as date-based names.
+- Add recursive directory reports as an explicit option.
 - Add CLI integration tests.
 - Add CSV delimiter and encoding options.
 - Add sample input and output folders for documentation.

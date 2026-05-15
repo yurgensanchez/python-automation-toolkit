@@ -10,6 +10,7 @@ from rich.table import Table
 from automation_toolkit.csv_tools import convert_csv_to_excel
 from automation_toolkit.file_tools import organize_by_extension
 from automation_toolkit.rename_tools import rename_files_by_pattern
+from automation_toolkit.report_tools import build_directory_report, format_directory_report
 from automation_toolkit.text_tools import clean_text
 
 app = typer.Typer(help="Practical Python automation tools for files and text.")
@@ -89,6 +90,25 @@ def csv_to_excel_command(
     """Convert a CSV file into an Excel workbook."""
     destination = convert_csv_to_excel(csv_file, output)
     console.print(f"Excel file created: {destination}")
+
+
+@app.command("file-report")
+def file_report_command(
+    source: Path = typer.Argument(..., help="Directory to summarize."),
+    output: Path | None = typer.Option(None, "--output", "-o", help="Optional Markdown output path."),
+) -> None:
+    """Generate a simple Markdown report for files in a directory."""
+    report = build_directory_report(source)
+    formatted = format_directory_report(report)
+
+    if output:
+        destination = output.expanduser().resolve()
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination.write_text(formatted, encoding="utf-8")
+        console.print(f"Report created: {destination}")
+        return
+
+    console.print(formatted)
 
 
 if __name__ == "__main__":
