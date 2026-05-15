@@ -1,8 +1,18 @@
 # Python Automation Toolkit
 
+[![Tests](https://github.com/yurgensanchez/python-automation-toolkit/actions/workflows/tests.yml/badge.svg)](https://github.com/yurgensanchez/python-automation-toolkit/actions/workflows/tests.yml)
+![Python](https://img.shields.io/badge/python-3.10%2B-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+
 Small Python CLI toolkit for practical automation tasks involving files and text.
 
 This repository is part of a professional portfolio focused on Python, automation, clean project structure, tests, and clear documentation. The goal is not to build a large automation platform. The goal is to show a simple, maintainable project that solves common tasks in a reproducible way.
+
+## Portfolio Context
+
+This is the first project in a broader portfolio focused on Python development and applied automation. I kept the scope intentionally small so the repository can show the basics well: a package structure, a usable CLI, tests, documentation, GitHub Actions, and a realistic commit/PR history.
+
+The project is not meant to be a full production automation suite. It is a practical foundation that demonstrates how I organize code, handle errors, document behavior, and add features incrementally.
 
 ## Problem
 
@@ -28,6 +38,10 @@ Small repetitive tasks often take more time than they should: grouping files, cl
 - requests for public API calls
 - pytest for tests
 - pathlib and logging from the standard library
+
+## Status
+
+Version `v0.1.0` is the first portfolio-ready version of this project. It includes the core CLI commands, unit tests, CLI integration tests, documentation, and a passing GitHub Actions workflow.
 
 ## Project Structure
 
@@ -190,7 +204,13 @@ See [docs/limitations.md](docs/limitations.md) for more detail.
 
 ## Next Steps
 
+These are intentionally left as possible future improvements, not requirements for the first portfolio version.
+
 - Add examples with sample files.
 - Add date-based rename patterns.
 - Add optional recursive reports.
 - Improve error messages for common user mistakes.
+
+## License
+
+This project is licensed under the MIT License. See [LICENSE](LICENSE).
